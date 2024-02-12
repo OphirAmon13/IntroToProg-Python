@@ -12,11 +12,12 @@ import csv
 FILE_NAME: str = "Enrollments.csv"
 
 # Define the Data Variables and constants
-student_first_name: str = ''  # Holds the first name of a student entered by the user.
-student_last_name: str = ''  # Holds the last name of a student entered by the user.
-course_name: str = ''  # Holds the name of a course entered by the user.
-student_data: dict = {}  # one row of student data
-students: list = []  # a table of student data
+student_first_name: str = ""  # Holds the first name of a student entered by the user.
+student_last_name: str = ""  # Holds the last name of a student entered by the user.
+course_name: str = ""  # Holds the name of a course entered by the user.
+student_data: dict = {}  # One row of student data
+students: list = []  # A table of student data
+csv_data: str = "" # Stores data to be put into CSV file.
 file = None  # Holds a reference to an opened file.
 menu_choice: str  # Hold the choice made by the user.
 
@@ -52,7 +53,8 @@ def print_table(): # Presents all information to the user
 def save_to_csv(): # Saves all information to CSV file
     with open(FILE_NAME, "w") as file:
         for row in students:
-            file.write(f"{row["first_name"]},{row["last_name"]},{row["course_name"]}\n")
+            csv_data = f"{row["first_name"]},{row["last_name"]},{row["course_name"]}\n"
+            file.write(csv_data)
         for row in students:
             print(f"You have registered {row["first_name"]} {row["last_name"]} for {row["course_name"]}.")
 
